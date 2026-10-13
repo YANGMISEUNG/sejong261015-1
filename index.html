@@ -1,0 +1,662 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>세종·공주 1박 2일 금강 트레킹 여행</title>
+    <!-- Tailwind CSS 로드 -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- 폰트 및 아이콘 -->
+    <link href="https://fonts.googleapis.com/css2?family=Pretendard:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        body { font-family: 'Pretendard', sans-serif; }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-800 min-h-screen flex flex-col">
+
+    <!-- 상단 네비게이션바 -->
+    <header class="bg-emerald-700 text-white shadow-md sticky top-0 z-50">
+        <div class="max-w-4xl mx-auto px-4 py-4 flex flex-col sm:flex-row justify-between items-center gap-3">
+            <div class="flex items-center gap-2">
+                <i class="fa-solid fa-person-hiking text-2xl text-emerald-200"></i>
+                <h1 class="text-xl font-bold tracking-tight">세종·공주 금강 트레킹 (1박 2일)</h1>
+            </div>
+            <!-- 페이지 탭 버튼 -->
+            <nav class="flex bg-emerald-800 p-1 rounded-xl gap-1 text-sm font-medium shadow-inner flex-wrap justify-center">
+                <button onclick="switchTab('plan')" id="btn-plan" class="px-3 py-2 rounded-lg transition-all bg-white text-emerald-800 shadow">
+                    <i class="fa-solid fa-map-location-dot mr-1"></i> 여행계획
+                </button>
+                <button onclick="switchTab('toilet')" id="btn-toilet" class="px-3 py-2 rounded-lg transition-all text-emerald-100 hover:bg-emerald-700">
+                    <i class="fa-solid fa-restroom mr-1"></i> 동선 화장실
+                </button>
+                <button onclick="switchTab('checklist')" id="btn-checklist" class="px-3 py-2 rounded-lg transition-all text-emerald-100 hover:bg-emerald-700">
+                    <i class="fa-solid fa-list-check mr-1"></i> 체크리스트
+                </button>
+                <button onclick="switchTab('budget')" id="btn-budget" class="px-3 py-2 rounded-lg transition-all text-emerald-100 hover:bg-emerald-700">
+                    <i class="fa-solid fa-wallet mr-1"></i> 예산 & 영수증
+                </button>
+            </nav>
+        </div>
+    </header>
+
+    <!-- 메인 컨텐츠 영역 -->
+    <main class="flex-grow max-w-4xl w-full mx-auto p-4 sm:p-6 mb-12">
+
+        <!-- ================= 1. 여행계획 탭 ================= -->
+        <section id="tab-plan" class="space-y-6">
+            <!-- 안내 배너 -->
+            <div class="bg-emerald-50 border border-emerald-200 rounded-2xl p-5 shadow-sm">
+                <h2 class="text-lg font-bold text-emerald-900 mb-2"><i class="fa-solid fa-circle-info mr-2 text-emerald-600"></i>여행 요약 및 지자체 혜택 정보</h2>
+                <ul class="text-sm text-emerald-800 space-y-1 list-disc list-inside">
+                    <li><strong>여행 일정:</strong> 10월 15일(목) 10:00 출발 ~ 10월 16일(금) 18:30 공주 출발 (60대 부부 2인)</li>
+                    <li><strong>숙소:</strong> 코트야드 바이 메리어트 세종</li>
+                    <li><strong>교통수단:</strong> 대중교통 (KTX, 버스 등 활용)</li>
+                    <li><strong>지자체 지원 및 경로우대:</strong> 세종 및 공주시 주요 관광지(공산성, 무령왕릉 등) 만 65세 이상 경로 우대(신분증 지참 시 무료 입장). 디지털 관광주민증 및 모바일 스탬프 투어 혜택 사전 확인 권장.</li>
+                    <li><strong>맛집 선정 기준:</strong> 식사 및 카페 장소는 <strong>구글 평점 4.0점 이상</strong>을 유지하는 검증된 명소로 구성하였습니다.</li>
+                </ul>
+            </div>
+
+            <!-- 1일차 일정 -->
+            <div class="bg-white rounded-2xl shadow-sm border border-slate-200 overflow-hidden">
+                <div class="bg-emerald-600 text-white px-5 py-3 font-bold text-lg flex justify-between items-center">
+                    <span>1일차: 10월 15일 (세종시 탐방 및 명소 순례)</span>
+                    <span class="text-xs bg-emerald-700 px-2.5 py-1 rounded-full">세종 중심 일정</span>
+                </div>
+                <div class="p-5 space-y-6 divide-y divide-slate-100">
+                    
+                    <div class="pt-4 first:pt-0 flex flex-col sm:flex-row justify-between items-start gap-4">
+                        <div class="space-y-1">
+                            <span class="text-xs font-semibold bg-emerald-100 text-emerald-800 px-2 py-0.5 rounded">10:00 ~ 13:20</span>
+                            <h3 class="font-bold text-slate-900 text-base">세종시로 이동 (대중교통)</h3>
+                            <p class="text-sm text-slate-600">자택 출발 후 KTX 오송역 또는 세종시 버스터미널 경유 이동</p>
+                        </div>
+                        <a href="https://www.google.com/maps/search/?api=1&query=세종고속시외버스터미널" target="_blank" class="self-start sm:self-center bg-slate-100 hover:bg-emerald-50 text-emerald-700 border border-slate-200 hover:border-emerald-300 text-xs font-semibold px-3 py-2 rounded-xl transition flex items-center gap-1.5 shadow-sm shrink-0">
+                            <i class="fa-solid fa-map-pin text-emerald-600"></i> @google maps
+                        </a>
+                    </div>
+
+                    <!-- 1일차 점심 -->
+                    <div class="pt-4 flex flex-col sm:flex-row justify-between items-start gap-4">
+                        <div class="space-y-2 flex-grow">
+                            <span class="text-xs font-semibold bg-amber-100 text-amber-800 px-2 py-0.5 rounded">점심 (13:30 ~ 14:30)</span>
+                            <h3 class="font-bold text-slate-900 text-base">세종시 도착 및 점심 식사 (구글 평점 4.0+ 복수 추천)</h3>
+                            <div class="space-y-2 mt-2">
+                                <div class="bg-amber-50/60 p-3 rounded-xl border border-amber-100 flex justify-between items-center">
+                                    <div>
+                                        <p class="text-sm font-semibold text-slate-800">1. 밥꽃한상 <span class="text-xs text-amber-600 font-bold">★ 4.9</span></p>
+                                        <p class="text-xs text-slate-600">정갈하고 푸짐한 정통 한식 정식 한상차림</p>
+                                    </div>
+                                    <a href="https://www.google.com/maps/search/?api=1&query=밥꽃한상+세종" target="_blank" class="text-xs bg-white text-emerald-700 border border-emerald-300 px-2.5 py-1.5 rounded-lg hover:bg-emerald-50 font-medium shrink-0">@google maps</a>
+                                </div>
+                                <div class="bg-amber-50/60 p-3 rounded-xl border border-amber-100 flex justify-between items-center">
+                                    <div>
+                                        <p class="text-sm font-semibold text-slate-800">2. 메콩타이 세종호수공원점 <span class="text-xs text-amber-600 font-bold">★ 4.5</span></p>
+                                        <p class="text-xs text-slate-600">호수공원 조망이 좋은 따뜻하고 자극적이지 않은 쌀국수/아시안 요리</p>
+                                    </div>
+                                    <a href="https://www.google.com/maps/search/?api=1&query=메콩타이+세종호수공원점" target="_blank" class="text-xs bg-white text-emerald-700 border border-emerald-300 px-2.5 py-1.5 rounded-lg hover:bg-emerald-50 font-medium shrink-0">@google maps</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="pt-4 flex flex-col sm:flex-row justify-between items-start gap-4">
+                        <div class="space-y-1">
+                            <span class="text-xs font-semibold bg-emerald-100 text-emerald-800 px-2 py-0.5 rounded">14:30 ~ 17:00</span>
+                            <h3 class="font-bold text-slate-900 text-base">세종시 인근 명소 탐방 (임난수 은행나무 포함)</h3>
+                            <p class="text-sm text-slate-600">천연기념물 세종동 '임난수 은행나무' 관람 후 세종호수공원 및 국립세종수목원 산책</p>
+                        </div>
+                        <a href="https://www.google.com/maps/search/?api=1&query=세종임난수은행나무" target="_blank" class="self-start sm:self-center bg-slate-100 hover:bg-emerald-50 text-emerald-700 border border-slate-200 hover:border-emerald-300 text-xs font-semibold px-3 py-2 rounded-xl transition flex items-center gap-1.5 shadow-sm shrink-0">
+                            <i class="fa-solid fa-map-pin text-emerald-600"></i> @google maps
+                        </a>
+                    </div>
+
+                    <!-- 1일차 간식/카페 -->
+                    <div class="pt-4 flex flex-col sm:flex-row justify-between items-start gap-4">
+                        <div class="space-y-2 flex-grow">
+                            <span class="text-xs font-semibold bg-blue-100 text-blue-800 px-2 py-0.5 rounded">간식 & 휴식 (16:00 ~ 17:00)</span>
+                            <h3 class="font-bold text-slate-900 text-base">오후 찻집 및 카페 휴식 (구글 평점 4.0+ 복수 추천)</h3>
+                            <div class="space-y-2 mt-2">
+                                <div class="bg-blue-50/60 p-3 rounded-xl border border-blue-100 flex justify-between items-center">
+                                    <div>
+                                        <p class="text-sm font-semibold text-slate-800">1. 카페 클래식 <span class="text-xs text-amber-600 font-bold">★ 4.4</span></p>
+                                        <p class="text-xs text-slate-600">한옥 정취와 따뜻한 차, 프리미엄 디저트가 있는 조용한 카페</p>
+                                    </div>
+                                    <a href="https://www.google.com/maps/search/?api=1&query=카페클래식+세종" target="_blank" class="text-xs bg-white text-emerald-700 border border-emerald-300 px-2.5 py-1.5 rounded-lg hover:bg-emerald-50 font-medium shrink-0">@google maps</a>
+                                </div>
+                                <div class="bg-blue-50/60 p-3 rounded-xl border border-blue-100 flex justify-between items-center">
+                                    <div>
+                                        <p class="text-sm font-semibold text-slate-800">2. 아우어베이커리 세종나성점 <span class="text-xs text-amber-600 font-bold">★ 4.3</span></p>
+                                        <p class="text-xs text-slate-600">나성동 숙소 근처 속 편한 음료와 베이커리 맛집</p>
+                                    </div>
+                                    <a href="https://www.google.com/maps/search/?api=1&query=아우어베이커리+세종나성점" target="_blank" class="text-xs bg-white text-emerald-700 border border-emerald-300 px-2.5 py-1.5 rounded-lg hover:bg-emerald-50 font-medium shrink-0">@google maps</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 1일차 저녁 & 숙소 -->
+                    <div class="pt-4 flex flex-col sm:flex-row justify-between items-start gap-4">
+                        <div class="space-y-2 flex-grow">
+                            <span class="text-xs font-semibold bg-purple-100 text-purple-800 px-2 py-0.5 rounded">저녁 & 숙소 (18:00~)</span>
+                            <h3 class="font-bold text-slate-900 text-base">저녁 식사 후 코트야드 세종 체크인 (구글 평점 4.0+ 복수 추천)</h3>
+                            <div class="space-y-2 mt-2">
+                                <div class="bg-purple-50/60 p-3 rounded-xl border border-purple-100 flex justify-between items-center">
+                                    <div>
+                                        <p class="text-sm font-semibold text-slate-800">1. 청미관 (나성동) <span class="text-xs text-amber-600 font-bold">★ 4.9</span></p>
+                                        <p class="text-xs text-slate-600">숙소 바로 인근, 부드러운 정갈한 한우/고기 요리 전문점</p>
+                                    </div>
+                                    <a href="https://www.google.com/maps/search/?api=1&query=청미관+세종" target="_blank" class="text-xs bg-white text-emerald-700 border border-emerald-300 px-2.5 py-1.5 rounded-lg hover:bg-emerald-50 font-medium shrink-0">@google maps</a>
+                                </div>
+                                <div class="bg-purple-50/60 p-3 rounded-xl border border-purple-100 flex justify-between items-center">
+                                    <div>
+                                        <p class="text-sm font-semibold text-slate-800">2. 광화문미진 세종점 <span class="text-xs text-amber-600 font-bold">★ 4.7</span></p>
+                                        <p class="text-xs text-slate-600">소화가 잘되는 시원한 메밀국수와 보쌈 정식</p>
+                                    </div>
+                                    <a href="https://www.google.com/maps/search/?api=1&query=광화문미진+세종점" target="_blank" class="text-xs bg-white text-emerald-700 border border-emerald-300 px-2.5 py-1.5 rounded-lg hover:bg-emerald-50 font-medium shrink-0">@google maps</a>
+                                </div>
+                            </div>
+                        </div>
+                        <a href="https://www.google.com/maps/search/?api=1&query=코트야드바이메리어트세종" target="_blank" class="self-start sm:self-center bg-slate-100 hover:bg-emerald-50 text-emerald-700 border border-slate-200 hover:border-emerald-300 text-xs font-semibold px-3 py-2 rounded-xl transition flex items-center gap-1.5 shadow-sm shrink-0">
+                            <i class="fa-solid fa-hotel text-emerald-600"></i> @google maps
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 2일차 일정 -->
+            <div class="bg-white rounded-2xl shadow-sm border border-slate-200 overflow-hidden">
+                <div class="bg-emerald-600 text-white px-5 py-3 font-bold text-lg flex justify-between items-center">
+                    <span>2일차: 10월 16일 (금강변 트레킹 및 공주 명소 탐방)</span>
+                    <span class="text-xs bg-emerald-700 px-2.5 py-1 rounded-full">트레킹 & 공주</span>
+                </div>
+                <div class="p-5 space-y-6 divide-y divide-slate-100">
+                    <!-- 2일차 아침 -->
+                    <div class="pt-4 first:pt-0 flex flex-col sm:flex-row justify-between items-start gap-4">
+                        <div class="space-y-1">
+                            <span class="text-xs font-semibold bg-amber-100 text-amber-800 px-2 py-0.5 rounded">아침 (08:00 ~ 09:00)</span>
+                            <h3 class="font-bold text-slate-900 text-base">호텔 조식 뷔페 (코트야드 세종 세종키친)</h3>
+                            <p class="text-sm text-slate-600">든든한 트레킹을 위해 호텔 내부 조식 뷔페 이용 권장</p>
+                        </div>
+                        <a href="https://www.google.com/maps/search/?api=1&query=코트야드바이메리어트세종" target="_blank" class="self-start sm:self-center bg-slate-100 hover:bg-emerald-50 text-emerald-700 border border-slate-200 hover:border-emerald-300 text-xs font-semibold px-3 py-2 rounded-xl transition flex items-center gap-1.5 shadow-sm shrink-0">
+                            <i class="fa-solid fa-map-pin text-emerald-600"></i> @google maps
+                        </a>
+                    </div>
+
+                    <div class="pt-4 flex flex-col sm:flex-row justify-between items-start gap-4">
+                        <div class="space-y-1">
+                            <span class="text-xs font-semibold bg-emerald-100 text-emerald-800 px-2 py-0.5 rounded">09:00 ~ 13:00</span>
+                            <h3 class="font-bold text-slate-900 text-base">금강변 트레킹 (세종 숙소 ~ 공주 공산성 구간)</h3>
+                            <p class="text-sm text-slate-600">금강 자전거길/산책로를 따라 시원한 강바람을 맞으며 공주 방향 걷기 (중간 휴식 및 필요시 대중교통 연계)</p>
+                        </div>
+                        <a href="https://www.google.com/maps/search/?api=1&query=공산성" target="_blank" class="self-start sm:self-center bg-slate-100 hover:bg-emerald-50 text-emerald-700 border border-slate-200 hover:border-emerald-300 text-xs font-semibold px-3 py-2 rounded-xl transition flex items-center gap-1.5 shadow-sm shrink-0">
+                            <i class="fa-solid fa-map-pin text-emerald-600"></i> @google maps
+                        </a>
+                    </div>
+
+                    <!-- 2일차 점심 -->
+                    <div class="pt-4 flex flex-col sm:flex-row justify-between items-start gap-4">
+                        <div class="space-y-2 flex-grow">
+                            <span class="text-xs font-semibold bg-amber-100 text-amber-800 px-2 py-0.5 rounded">점심 (13:00 ~ 14:30)</span>
+                            <h3 class="font-bold text-slate-900 text-base">공주 도착 및 점심 식사 (구글 평점 4.0+ 복수 추천)</h3>
+                            <div class="space-y-2 mt-2">
+                                <div class="bg-amber-50/60 p-3 rounded-xl border border-amber-100 flex justify-between items-center">
+                                    <div>
+                                        <p class="text-sm font-semibold text-slate-800">1. 시장정육점식당 <span class="text-xs text-amber-600 font-bold">★ 4.3</span></p>
+                                        <p class="text-xs text-slate-600">공산성 바로 앞 특산물 알밤육회비빔밥 맛집</p>
+                                    </div>
+                                    <a href="https://www.google.com/maps/search/?api=1&query=시장정육점식당+공주" target="_blank" class="text-xs bg-white text-emerald-700 border border-emerald-300 px-2.5 py-1.5 rounded-lg hover:bg-emerald-50 font-medium shrink-0">@google maps</a>
+                                </div>
+                                <div class="bg-amber-50/60 p-3 rounded-xl border border-amber-100 flex justify-between items-center">
+                                    <div>
+                                        <p class="text-sm font-semibold text-slate-800">2. 매향 <span class="text-xs text-amber-600 font-bold">★ 4.3</span></p>
+                                        <p class="text-xs text-slate-600">100% 메밀로 뽑아 소화가 매우 잘되는 평양냉면 및 막국수</p>
+                                    </div>
+                                    <a href="https://www.google.com/maps/search/?api=1&query=매향+공주" target="_blank" class="text-xs bg-white text-emerald-700 border border-emerald-300 px-2.5 py-1.5 rounded-lg hover:bg-emerald-50 font-medium shrink-0">@google maps</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="pt-4 flex flex-col sm:flex-row justify-between items-start gap-4">
+                        <div class="space-y-1">
+                            <span class="text-xs font-semibold bg-emerald-100 text-emerald-800 px-2 py-0.5 rounded">14:30 ~ 16:30</span>
+                            <h3 class="font-bold text-slate-900 text-base">공주시 인근 명소 구경 (공산성 & 무령왕릉)</h3>
+                            <p class="text-sm text-slate-600">유네스코 세계유산 공산성 성곽길 산책 및 무령왕릉(무령왕릉과 왕릉원) 관람 (만 65세 이상 무료입장)</p>
+                        </div>
+                        <a href="https://www.google.com/maps/search/?api=1&query=공주무령왕릉과왕릉원" target="_blank" class="self-start sm:self-center bg-slate-100 hover:bg-emerald-50 text-emerald-700 border border-slate-200 hover:border-emerald-300 text-xs font-semibold px-3 py-2 rounded-xl transition flex items-center gap-1.5 shadow-sm shrink-0">
+                            <i class="fa-solid fa-map-pin text-emerald-600"></i> @google maps
+                        </a>
+                    </div>
+
+                    <!-- 2일차 간식/카페 -->
+                    <div class="pt-4 flex flex-col sm:flex-row justify-between items-start gap-4">
+                        <div class="space-y-2 flex-grow">
+                            <span class="text-xs font-semibold bg-blue-100 text-blue-800 px-2 py-0.5 rounded">간식 & 특산물 (16:30 ~ 17:15)</span>
+                            <h3 class="font-bold text-slate-900 text-base">공주 알밤 디저트 및 다과 (구글 평점 4.0+ 복수 추천)</h3>
+                            <div class="space-y-2 mt-2">
+                                <div class="bg-blue-50/60 p-3 rounded-xl border border-blue-100 flex justify-between items-center">
+                                    <div>
+                                        <p class="text-sm font-semibold text-slate-800">1. 베이커리 밤마을 <span class="text-xs text-amber-600 font-bold">★ 4.2</span></p>
+                                        <p class="text-xs text-slate-600">공산성 정문 앞 고소한 밤파이와 밤타르트 대표 맛집</p>
+                                    </div>
+                                    <a href="https://www.google.com/maps/search/?api=1&query=베이커리밤마을+공주" target="_blank" class="text-xs bg-white text-emerald-700 border border-emerald-300 px-2.5 py-1.5 rounded-lg hover:bg-emerald-50 font-medium shrink-0">@google maps</a>
+                                </div>
+                                <div class="bg-blue-50/60 p-3 rounded-xl border border-blue-100 flex justify-between items-center">
+                                    <div>
+                                        <p class="text-sm font-semibold text-slate-800">2. 로컬하우스 <span class="text-xs text-amber-600 font-bold">★ 4.6</span></p>
+                                        <p class="text-xs text-slate-600">공주 한옥마을 느낌을 품은 감성적인 한옥 카페</p>
+                                    </div>
+                                    <a href="https://www.google.com/maps/search/?api=1&query=로컬하우스+공주" target="_blank" class="text-xs bg-white text-emerald-700 border border-emerald-300 px-2.5 py-1.5 rounded-lg hover:bg-emerald-50 font-medium shrink-0">@google maps</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 2일차 저녁 -->
+                    <div class="pt-4 flex flex-col sm:flex-row justify-between items-start gap-4">
+                        <div class="space-y-2 flex-grow">
+                            <span class="text-xs font-semibold bg-purple-100 text-purple-800 px-2 py-0.5 rounded">저녁 & 귀가 (17:15 ~ 18:30)</span>
+                            <h3 class="font-bold text-slate-900 text-base">공주 이른 저녁 식사 후 18:30 출발 (구글 평점 4.0+ 복수 추천)</h3>
+                            <div class="space-y-2 mt-2">
+                                <div class="bg-purple-50/60 p-3 rounded-xl border border-purple-100 flex justify-between items-center">
+                                    <div>
+                                        <p class="text-sm font-semibold text-slate-800">1. 곰골식당 <span class="text-xs text-amber-600 font-bold">★ 4.0</span></p>
+                                        <p class="text-xs text-slate-600">참숯제육석쇠구이와 생선구이가 담백한 마당 한식집</p>
+                                    </div>
+                                    <a href="https://www.google.com/maps/search/?api=1&query=곰골식당+공주" target="_blank" class="text-xs bg-white text-emerald-700 border border-emerald-300 px-2.5 py-1.5 rounded-lg hover:bg-emerald-50 font-medium shrink-0">@google maps</a>
+                                </div>
+                                <div class="bg-purple-50/60 p-3 rounded-xl border border-purple-100 flex justify-between items-center">
+                                    <div>
+                                        <p class="text-sm font-semibold text-slate-800">2. 고마나루1999 <span class="text-xs text-amber-600 font-bold">★ 4.1</span></p>
+                                        <p class="text-xs text-slate-600">정갈하게 차려지는 공주 대표 수육 및 한정식 상차림</p>
+                                    </div>
+                                    <a href="https://www.google.com/maps/search/?api=1&query=고마나루1999" target="_blank" class="text-xs bg-white text-emerald-700 border border-emerald-300 px-2.5 py-1.5 rounded-lg hover:bg-emerald-50 font-medium shrink-0">@google maps</a>
+                                </div>
+                            </div>
+                        </div>
+                        <a href="https://www.google.com/maps/search/?api=1&query=공주종합버스터미널" target="_blank" class="self-start sm:self-center bg-slate-100 hover:bg-emerald-50 text-emerald-700 border border-slate-200 hover:border-emerald-300 text-xs font-semibold px-3 py-2 rounded-xl transition flex items-center gap-1.5 shadow-sm shrink-0">
+                            <i class="fa-solid fa-bus text-emerald-600"></i> @google maps
+                        </a>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- ================= 2. 동선 화장실 탭 (신규 추가) ================= -->
+        <section id="tab-toilet" class="hidden space-y-6">
+            <div class="bg-white rounded-2xl shadow-sm border border-slate-200 p-6">
+                <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-3 mb-6">
+                    <div>
+                        <h2 class="text-lg font-bold text-slate-900"><i class="fa-solid fa-restroom text-emerald-600 mr-2"></i>금강 트레킹 동선 주요 공공화장실</h2>
+                        <p class="text-xs text-slate-500 mt-1">세종시 및 공주시 이동 경로 상 접근하기 편리한 개방/공공화장실 목록입니다.</p>
+                    </div>
+                </div>
+
+                <!-- 화장실 추가 폼 -->
+                <div class="bg-slate-50 border border-slate-200 rounded-2xl p-4 mb-6">
+                    <h3 class="text-sm font-bold text-slate-800 mb-3"><i class="fa-solid fa-circle-plus text-emerald-600 mr-1"></i> 새로운 화장실 추가하기</h3>
+                    <div class="grid grid-cols-1 sm:grid-cols-3 gap-3 mb-3">
+                        <input type="text" id="toilet-name" placeholder="화장실 이름 (예: 세종호수공원 북측 화장실)" class="border border-slate-300 rounded-xl px-3 py-2 text-sm bg-white focus:ring-2 focus:ring-emerald-500">
+                        <input type="text" id="toilet-location" placeholder="위치 설명 (예: 호수공원 무대섬 근처)" class="border border-slate-300 rounded-xl px-3 py-2 text-sm bg-white focus:ring-2 focus:ring-emerald-500">
+                        <input type="text" id="toilet-query" placeholder="구글맵 검색어 (예: 세종호수공원 화장실)" class="border border-slate-300 rounded-xl px-3 py-2 text-sm bg-white focus:ring-2 focus:ring-emerald-500">
+                    </div>
+                    <button onclick="addToilet()" class="bg-emerald-600 hover:bg-emerald-700 text-white font-medium px-4 py-2 rounded-xl text-sm transition shadow-sm w-full sm:w-auto">
+                        <i class="fa-solid fa-plus mr-1"></i> 화장실 저장하기
+                    </button>
+                </div>
+
+                <!-- 화장실 목록 카드 컨테이너 -->
+                <div id="toilet-container" class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                    <!-- 자바스크립트 동적 렌더링 -->
+                </div>
+            </div>
+        </section>
+
+        <!-- ================= 3. 체크리스트 탭 ================= -->
+        <section id="tab-checklist" class="hidden space-y-6">
+            <div class="bg-white rounded-2xl shadow-sm border border-slate-200 p-6">
+                <div class="flex justify-between items-center mb-4">
+                    <h2 class="text-lg font-bold text-slate-900"><i class="fa-solid fa-square-check text-emerald-600 mr-2"></i>여행 준비물 체크리스트</h2>
+                    <span id="checklist-progress" class="text-sm font-medium text-emerald-700 bg-emerald-50 px-3 py-1 rounded-full">0% 완료</span>
+                </div>
+                <!-- 입력 추가 폼 -->
+                <div class="flex gap-2 mb-6">
+                    <input type="text" id="new-item-input" placeholder="새로운 준비물을 입력하세요 (예: 트레킹 등산화)" class="flex-grow border border-slate-300 rounded-xl px-4 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-emerald-500">
+                    <button onclick="addChecklistItem()" class="bg-emerald-600 hover:bg-emerald-700 text-white font-medium px-5 py-2.5 rounded-xl text-sm transition shadow-sm"><i class="fa-solid fa-plus mr-1"></i> 추가</button>
+                </div>
+                <!-- 체크리스트 목록 컨테이너 -->
+                <div id="checklist-container" class="space-y-3">
+                    <!-- 자바스크립트로 동적 렌더링 -->
+                </div>
+            </div>
+        </section>
+
+        <!-- ================= 4. 예산 & 영수증 탭 ================= -->
+        <section id="tab-budget" class="hidden space-y-6">
+            <!-- 예산 요약 카드 -->
+            <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+                <div class="bg-white p-5 rounded-2xl shadow-sm border border-slate-200">
+                    <p class="text-xs font-semibold text-slate-500 uppercase">예산 총액</p>
+                    <p id="total-budget-display" class="text-2xl font-bold text-slate-900 mt-1">0원</p>
+                </div>
+                <div class="bg-white p-5 rounded-2xl shadow-sm border border-slate-200">
+                    <p class="text-xs font-semibold text-slate-500 uppercase">지출 합계</p>
+                    <p id="total-expense-display" class="text-2xl font-bold text-emerald-600 mt-1">0원</p>
+                </div>
+                <div class="bg-white p-5 rounded-2xl shadow-sm border border-slate-200">
+                    <p class="text-xs font-semibold text-slate-500 uppercase">잔액</p>
+                    <p id="balance-display" class="text-2xl font-bold text-blue-600 mt-1">0원</p>
+                </div>
+            </div>
+
+            <!-- 지출 입력 폼 -->
+            <div class="bg-white rounded-2xl shadow-sm border border-slate-200 p-6">
+                <h3 class="text-base font-bold text-slate-900 mb-4"><i class="fa-solid fa-receipt text-emerald-600 mr-2"></i>지출 내역 기록</h3>
+                <div class="grid grid-cols-1 sm:grid-cols-4 gap-3 mb-4">
+                    <input type="text" id="expense-title" placeholder="항목 이름 (예: 점심식사)" class="border border-slate-300 rounded-xl px-3 py-2.5 text-sm focus:ring-2 focus:ring-emerald-500">
+                    <input type="number" id="expense-amount" placeholder="금액 (원)" class="border border-slate-300 rounded-xl px-3 py-2.5 text-sm focus:ring-2 focus:ring-emerald-500">
+                    <select id="expense-category" class="border border-slate-300 rounded-xl px-3 py-2.5 text-sm bg-white focus:ring-2 focus:ring-emerald-500">
+                        <option value="식비">식비/간식</option>
+                        <option value="숙박">숙박</option>
+                        <option value="교통">교통비</option>
+                        <option value="기타">기타/관람</option>
+                    </select>
+                    <button onclick="addExpense()" class="bg-emerald-600 hover:bg-emerald-700 text-white font-medium px-4 py-2.5 rounded-xl text-sm transition shadow-sm"><i class="fa-solid fa-circle-plus mr-1"></i> 지출 기록</button>
+                </div>
+
+                <!-- 지출 목록 테이블 -->
+                <div class="overflow-x-auto">
+                    <table class="w-full text-left text-sm text-slate-600">
+                        <thead class="bg-slate-100 text-slate-700 uppercase text-xs">
+                            <tr>
+                                <th class="p-3 rounded-l-xl">항목</th>
+                                <th class="p-3">카테고리</th>
+                                <th class="p-3">금액</th>
+                                <th class="p-3 rounded-r-xl text-center">관리</th>
+                            </tr>
+                        </thead>
+                        <tbody id="expense-table-body" class="divide-y divide-slate-100">
+                            <!-- 동적 렌더링 -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- 사진 및 영수증 보관함 -->
+            <div class="bg-white rounded-2xl shadow-sm border border-slate-200 p-6">
+                <div class="flex justify-between items-center mb-4">
+                    <h3 class="text-base font-bold text-slate-900"><i class="fa-solid fa-camera-retro text-emerald-600 mr-2"></i>추억 사진 및 영수증 보관함</h3>
+                    <label class="bg-slate-100 hover:bg-emerald-50 text-emerald-700 border border-slate-200 hover:border-emerald-300 px-4 py-2 rounded-xl text-xs font-semibold cursor-pointer transition shadow-sm">
+                        <i class="fa-solid fa-upload mr-1"></i> 사진/영수증 추가
+                        <input type="file" id="image-upload" accept="image/*" class="hidden" onchange="handleImageUpload(event)">
+                    </label>
+                </div>
+                <div id="gallery-container" class="grid grid-cols-2 sm:grid-cols-4 gap-4">
+                    <!-- 동적 이미지 렌더링 -->
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- 푸터 -->
+    <footer class="bg-white border-t border-slate-200 py-6 text-center text-xs text-slate-500 mt-auto">
+        <p>세종·공주 금강 트레킹 1박 2일 여행 플래너 &copy; 2026. 건강하고 행복한 여행 되세요!</p>
+    </footer>
+
+    <!-- 자바스크립트 로직 -->
+    <script>
+        // 탭 전환 함수
+        function switchTab(tabId) {
+            const tabs = ['plan', 'toilet', 'checklist', 'budget'];
+            tabs.forEach(t => {
+                const sec = document.getElementById('tab-' + t);
+                const btn = document.getElementById('btn-' + t);
+                if (sec) sec.classList.add('hidden');
+                if (btn) btn.className = "px-3 py-2 rounded-lg transition-all text-emerald-100 hover:bg-emerald-700";
+            });
+
+            const activeSec = document.getElementById('tab-' + tabId);
+            const activeBtn = document.getElementById('btn-' + tabId);
+            if (activeSec) activeSec.classList.remove('hidden');
+            if (activeBtn) activeBtn.className = "px-3 py-2 rounded-lg transition-all bg-white text-emerald-800 shadow";
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        // 화장실 데이터 및 로직
+        let toilets = JSON.parse(localStorage.getItem('sejong_toilets')) || [
+            { id: 1, name: "세종호수공원 제1주차장 화장실", location: "세종호수공원 남측 인근", query: "세종호수공원 화장실" },
+            { id: 2, name: "국립세종수목원 내부 고객화장실", location: "수목원 안내센터 및 온실 주변", query: "국립세종수목원 화장실" },
+            { id: 3, name: "임난수 은행나무 보호구역 인근 공중화장실", location: "세종시 전의면/금남면 동선 인근", query: "세종시 공중화장실" },
+            { id: 4, name: "코트야드 바이 메리어트 세종 로비 화장실", location: "나성동 숙소 건물 내부", query: "코트야드바이메리어트세종" },
+            { id: 5, name: "금강 자전거길(합강공원 부근) 간이 화장실", location: "세종~공주 금강변 자전거 산책로", query: "합강공원 화장실" },
+            { id: 6, name: "공산성 매표소 및 공영주차장 화장실", location: "공주시 금성동 공산성 입구", query: "공산성 화장실" },
+            { id: 7, name: "무령왕릉과 왕릉원 방문객 화장실", location: "공주시 송산리 고분군 매표소 옆", query: "무령왕릉 화장실" },
+            { id: 8, name: "공주종합버스터미널 내부 화장실", location: "공주시 터미널 대합실 내", query: "공주종합버스터미널 화장실" }
+        ];
+
+        function renderToilets() {
+            const container = document.getElementById('toilet-container');
+            if (!container) return;
+            container.innerHTML = '';
+
+            toilets.forEach((item, index) => {
+                const div = document.createElement('div');
+                div.className = "bg-slate-50 border border-slate-200 rounded-2xl p-4 flex flex-col justify-between shadow-sm hover:border-emerald-300 transition";
+                div.innerHTML = `
+                    <div class="space-y-1 mb-3">
+                        <div class="flex items-center justify-between">
+                            <span class="text-xs font-semibold bg-emerald-100 text-emerald-800 px-2 py-0.5 rounded">공공/편의 화장실 #${index + 1}</span>
+                            <button onclick="deleteToilet(${index})" class="text-slate-400 hover:text-red-500 text-xs px-1"><i class="fa-solid fa-trash-can"></i></button>
+                        </div>
+                        <h4 class="font-bold text-slate-900 text-sm mt-1">${item.name}</h4>
+                        <p class="text-xs text-slate-600"><i class="fa-solid fa-location-dot text-emerald-600 mr-1"></i>${item.location}</p>
+                    </div>
+                    <div class="pt-2 border-t border-slate-200 flex justify-end">
+                        <a href="https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(item.query)}" target="_blank" class="bg-white text-emerald-700 border border-emerald-300 hover:bg-emerald-50 text-xs font-semibold px-3 py-1.5 rounded-xl transition flex items-center gap-1 shadow-sm">
+                            <i class="fa-solid fa-map-location-dot text-emerald-600"></i> @google maps
+                        </a>
+                    </div>
+                `;
+                container.appendChild(div);
+            });
+            localStorage.setItem('sejong_toilets', JSON.stringify(toilets));
+        }
+
+        function addToilet() {
+            const nameInput = document.getElementById('toilet-name');
+            const locInput = document.getElementById('toilet-location');
+            const queryInput = document.getElementById('toilet-query');
+
+            if (!nameInput.value.trim() || !locInput.value.trim()) {
+                return;
+            }
+
+            toilets.push({
+                id: Date.now(),
+                name: nameInput.value.trim(),
+                location: locInput.value.trim(),
+                query: queryInput.value.trim() || nameInput.value.trim()
+            });
+
+            nameInput.value = '';
+            locInput.value = '';
+            queryInput.value = '';
+            renderToilets();
+        }
+
+        function deleteToilet(index) {
+            toilets.splice(index, 1);
+            renderToilets();
+        }
+
+        // 체크리스트 데이터 및 로직
+        let checklist = JSON.parse(localStorage.getItem('sejong_checklist')) || [
+            { id: 1, text: "신분증 (경로 우대 무료 입장 필수)", checked: true },
+            { id: 2, text: "편안한 트레킹화 및 완충 양말", checked: false },
+            { id: 3, text: "가벼운 바람막이 및 여벌 옷", checked: false },
+            { id: 4, text: "상비약 (소화제, 파스, 진통제)", checked: false },
+            { id: 5, text: "보조배터리 및 스마트폰 충전기", checked: false },
+            { id: 6, text: "개인 텀블러 및 보온용 물병", checked: false }
+        ];
+
+        function renderChecklist() {
+            const container = document.getElementById('checklist-container');
+            if(!container) return;
+            container.innerHTML = '';
+            let completedCount = 0;
+
+            checklist.forEach((item, index) => {
+                if (item.checked) completedCount++;
+                const div = document.createElement('div');
+                div.className = `flex items-center justify-between p-3.5 rounded-xl border transition ${item.checked ? 'bg-slate-50 border-slate-200 text-slate-400 line-through' : 'bg-white border-slate-200 text-slate-800 shadow-sm'}`;
+                div.innerHTML = `
+                    <label class="flex items-center gap-3 cursor-pointer flex-grow">
+                        <input type="checkbox" ${item.checked ? 'checked' : ''} onchange="toggleChecklistItem(${index})" class="w-5 h-5 accent-emerald-600 rounded">
+                        <span class="text-sm font-medium">${item.text}</span>
+                    </label>
+                    <button onclick="deleteChecklistItem(${index})" class="text-slate-400 hover:text-red-500 px-2 py-1 text-xs"><i class="fa-solid fa-trash-can"></i></button>
+                `;
+                container.appendChild(div);
+            });
+
+            const percent = checklist.length > 0 ? Math.round((completedCount / checklist.length) * 100) : 0;
+            const prog = document.getElementById('checklist-progress');
+            if(prog) prog.innerText = `${percent}% 완료`;
+            localStorage.setItem('sejong_checklist', JSON.stringify(checklist));
+        }
+
+        function addChecklistItem() {
+            const input = document.getElementById('new-item-input');
+            if (!input || !input.value.trim()) return;
+            checklist.push({ id: Date.now(), text: input.value.trim(), checked: false });
+            input.value = '';
+            renderChecklist();
+        }
+
+        function toggleChecklistItem(index) {
+            checklist[index].checked = !checklist[index].checked;
+            renderChecklist();
+        }
+
+        function deleteChecklistItem(index) {
+            checklist.splice(index, 1);
+            renderChecklist();
+        }
+
+        // 예산 및 지출 데이터 및 로직
+        let expenses = JSON.parse(localStorage.getItem('sejong_expenses')) || [
+            { id: 1, title: "코트야드 세종 숙박예약", category: "숙박", amount: 180000 },
+            { id: 2, title: "대중교통비 및 KTX 예매", category: "교통", amount: 60000 }
+        ];
+
+        let totalBudget = 400000;
+
+        function renderExpenses() {
+            const tbody = document.getElementById('expense-table-body');
+            if(!tbody) return;
+            tbody.innerHTML = '';
+            let totalExpense = 0;
+
+            expenses.forEach((item, index) => {
+                totalExpense += Number(item.amount);
+                const tr = document.createElement('tr');
+                tr.className = "border-b border-slate-100 hover:bg-slate-50";
+                tr.innerHTML = `
+                    <td class="p-3 font-medium text-slate-800">${item.title}</td>
+                    <td class="p-3"><span class="bg-slate-100 text-slate-700 px-2 py-0.5 rounded text-xs">${item.category}</span></td>
+                    <td class="p-3 font-semibold text-emerald-700">${Number(item.amount).toLocaleString()}원</td>
+                    <td class="p-3 text-center"><button onclick="deleteExpense(${index})" class="text-slate-400 hover:text-red-500 text-xs"><i class="fa-solid fa-trash-can"></i></button></td>
+                `;
+                tbody.appendChild(tr);
+            });
+
+            const bDisp = document.getElementById('total-budget-display');
+            const eDisp = document.getElementById('total-expense-display');
+            const balDisp = document.getElementById('balance-display');
+            if(bDisp) bDisp.innerText = totalBudget.toLocaleString() + '원';
+            if(eDisp) eDisp.innerText = totalExpense.toLocaleString() + '원';
+            if(balDisp) balDisp.innerText = (totalBudget - totalExpense).toLocaleString() + '원';
+            localStorage.setItem('sejong_expenses', JSON.stringify(expenses));
+        }
+
+        function addExpense() {
+            const titleInput = document.getElementById('expense-title');
+            const amountInput = document.getElementById('expense-amount');
+            const categorySelect = document.getElementById('expense-category');
+
+            if (!titleInput || !amountInput || !titleInput.value.trim() || !amountInput.value) {
+                return;
+            }
+
+            expenses.push({
+                id: Date.now(),
+                title: titleInput.value.trim(),
+                category: categorySelect.value,
+                amount: Number(amountInput.value)
+            });
+
+            titleInput.value = '';
+            amountInput.value = '';
+            renderExpenses();
+        }
+
+        function deleteExpense(index) {
+            expenses.splice(index, 1);
+            renderExpenses();
+        }
+
+        // 사진 및 영수증 갤러리 로직
+        let gallery = JSON.parse(localStorage.getItem('sejong_gallery')) || [];
+
+        function renderGallery() {
+            const container = document.getElementById('gallery-container');
+            if(!container) return;
+            container.innerHTML = '';
+
+            if (gallery.length === 0) {
+                container.innerHTML = `<div class="col-span-full text-center py-8 text-slate-400 text-sm">저장된 사진이나 영수증이 없습니다. 상단 버튼을 눌러 추가해보세요.</div>`;
+                return;
+            }
+
+            gallery.forEach((imgSrc, index) => {
+                const div = document.createElement('div');
+                div.className = "relative group rounded-xl overflow-hidden border border-slate-200 aspect-square bg-slate-100";
+                div.innerHTML = `
+                    <img src="${imgSrc}" alt="추억 사진" class="w-full h-full object-cover">
+                    <button onclick="deleteImage(${index})" class="absolute top-2 right-2 bg-red-600 text-white w-7 h-7 rounded-full flex items-center justify-center text-xs opacity-0 group-hover:opacity-100 transition shadow"><i class="fa-solid fa-xmark"></i></button>
+                `;
+                container.appendChild(div);
+            });
+            localStorage.setItem('sejong_gallery', JSON.stringify(gallery));
+        }
+
+        function handleImageUpload(event) {
+            const file = event.target.files[0];
+            if (!file) return;
+
+            const reader = new FileReader();
+            reader.onload = function(e) {
+                gallery.push(e.target.result);
+                renderGallery();
+            };
+            reader.readAsDataURL(file);
+        }
+
+        function deleteImage(index) {
+            gallery.splice(index, 1);
+            renderGallery();
+        }
+
+        // 초기 실행
+        window.onload = function() {
+            renderToilets();
+            renderChecklist();
+            renderExpenses();
+            renderGallery();
+        };
+    </script>
+</body>
+</html>
